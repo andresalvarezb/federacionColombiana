@@ -53,6 +53,14 @@ def main():
                         # cree al equipo
                         pass
 
+                agregarPartido = input('Agregar otro partido [Y/N]: ')
+                if agregarPartido.lower() == 'y':
+                    hayPartidos = True
+                    partido += 1
+                else:
+                    hayPartidos = False
+
+
 
 
 
