@@ -19,7 +19,23 @@ def main():
         while hayFecha:
             print(f'FECHA #{fecha}')
 
+            # Creacion de partidos
+            hayPartidos = True
+            partido = 1
+            while hayPartidos:
+                print(f"""
+                {'-'*9}
+                PARIDO {partido}
+                {'-'*9}""")
 
+                # registro por partido
+                equipos_en_partido = []
+                local = input(f'Equipo local: ').lower()
+                gol_local = int(input('Goles: '))
+                visitante = input(f'Equipo visitante: ').lower()
+                gol_visitante = int(input('Goles: '))
+
+                # TODO: Validar la existencia de los equipos en la tabla de posiciones
 
             agregarFecha = input('Agregar otra fecha [Y/N]: ')
             if agregarFecha.lower() == 'y':
