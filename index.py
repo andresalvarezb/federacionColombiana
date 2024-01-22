@@ -191,9 +191,10 @@ def main():
                 menu = True
             else:
                 menu = False
+        
         elif opcion == 5:
             # ! Equipos con más partidos
-            # obtención de puntos
+            # obtención de partidos
             partidos = []
             for equipo in range(len(tablaEquipos)):
                 partidos.append(tablaEquipos[equipo][1])
@@ -220,18 +221,29 @@ def main():
                 menu = True
             else:
                 menu = False
+        
         elif opcion == 6:
+            # ! Total de goles anotados por todos los equipos
+            # obtención de goles
+            goles = []
+            for equipo in range(len(tablaEquipos)):
+                goles.append(tablaEquipos[equipo][5])
+
+            print(f'Total de goles en campeonato: {sum(goles)}')
+
             regresarMenu = input('Regresar al menú principal [Y/N]: ')
             if regresarMenu.lower() == 'y':
                 menu = True
             else:
                 menu = False
+        
         elif opcion == 7:
             regresarMenu = input('Regresar al menú principal [Y/N]: ')
             if regresarMenu.lower() == 'y':
                 menu = True
             else:
                 menu = False
+        
         elif opcion == 8:
             regresarMenu = input('Regresar al menú principal [Y/N]: ')
             if regresarMenu.lower() == 'y':
