@@ -4,7 +4,6 @@ def main():
     # CREACION DE EQUIPOS
     # LECTURA DE EQUIPOS (TABLA DE POSICIONES)
     # ACTUALIZACIÓN DE EQUIPOS
-    # ELIMINACINACIÓN DE EQUIPOS (SALIDA DEL PROGRAMA)
 
     tablaEquipos = []
 
@@ -125,7 +124,7 @@ def main():
 
         elif opcion == 2:
             # ! Consultar tabla de posiciones
-            print(tabulate(tablaEquipos))
+            print(tabulate(tablaEquipos, headers=['Equipo', 'PJ', 'PG', 'PP', ' PE', 'GF', 'GC', 'TP']))
             regresarMenu = input('Regresar al menú principal [Y/N]: ')
             if regresarMenu.lower() == 'y':
                 menu = True
@@ -155,7 +154,7 @@ def main():
                     equipos_goleadores.append([tablaEquipos[equipo][0], tablaEquipos[equipo][5]])
 
 
-            print(tabulate(equipos_goleadores))
+            print(tabulate(equipos_goleadores, headers=['Equipo', 'Goles']))
             regresarMenu = input('Regresar al menú principal [Y/N]: ')
             if regresarMenu.lower() == 'y':
                 menu = True
@@ -184,7 +183,7 @@ def main():
                 if tablaEquipos[equipo][7] == puntos_maximos[0]:
                     equipos_goleadores.append([tablaEquipos[equipo][0], tablaEquipos[equipo][7]])
 
-            print(tabulate(equipos_goleadores))
+            print(tabulate(equipos_goleadores, headers=['Equipo', 'Puntos Totales']))
 
             regresarMenu = input('Regresar al menú principal [Y/N]: ')
             if regresarMenu.lower() == 'y':
@@ -214,7 +213,7 @@ def main():
                 if tablaEquipos[equipo][1] == partidos_maximos[0]:
                     equipos_goleadores.append([tablaEquipos[equipo][0], tablaEquipos[equipo][1]])
 
-            print(tabulate(equipos_goleadores))
+            print(tabulate(equipos_goleadores, headers=['Equipo', 'No. de Partidos']))
 
             regresarMenu = input('Regresar al menú principal [Y/N]: ')
             if regresarMenu.lower() == 'y':
@@ -254,14 +253,10 @@ def main():
                 menu = True
             else:
                 menu = False
-        
+
         elif opcion == 8:
-            regresarMenu = input('Regresar al menú principal [Y/N]: ')
-            if regresarMenu.lower() == 'y':
-                menu = True
-            else:
-                menu = False
-            
+            print('¡Hasta pronto!')
+            menu = False
     print('¡Hasta pronto!')
 
 
