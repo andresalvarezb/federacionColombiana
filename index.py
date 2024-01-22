@@ -1,3 +1,5 @@
+from tabulate import tabulate
+
 def main():
     # CREACION DE EQUIPOS
     # LECTURA DE EQUIPOS (TABLA DE POSICIONES)
@@ -37,7 +39,8 @@ def main():
                 visitante = input(f'Equipo visitante: ').lower()
                 gol_visitante = int(input('Goles: '))
 
-                equipos_en_partido.append([local, visitante])
+                equipos_en_partido.append([local, gol_local])
+                equipos_en_partido.append([visitante, gol_visitante])
 
                 # TODO: Validar la existencia de los equipos en la tabla de posiciones
                 # Obtener el nombre de los equipos
@@ -46,21 +49,77 @@ def main():
                     equiposExistentes.append(tablaEquipos[equipo][0])
 
                 # validar existencia de los equipos en partido en la tabla general de los equipos
+                # if (local not in equiposExistentes) or (visitante not in equiposExistentes):
+                #     print(True)
+                #     # cree al equipo con valores iniciales segun marcador
+                #     if gol_local > gol_visitante:
+                #         tablaEquipos.append([local, 1, 1, 0, 0, gol_local, gol_visitante, 3])
+                #         tablaEquipos.append([visitante, 1, 0, 1, 0, gol_visitante, gol_local, 0])
+                #     elif gol_local < gol_visitante:
+                #         tablaEquipos.append([local, 1, 0, 1, 0, gol_local, gol_visitante, 0])
+                #         tablaEquipos.append([visitante, 1, 1, 0, 0, gol_visitante, gol_local, 3])
+                #     else:
+                #         tablaEquipos.append([local, 1, 0, 0, 1, gol_local, gol_visitante, 1])
+                #         tablaEquipos.append([visitante, 1, 0, 0, 1, gol_visitante, gol_local, 1])
                 for equipo in range(len(equipos_en_partido)):
-                    if equipos_en_partido[equipo] in equiposExistentes:
-                        # actualice datos
-                        pass
-                    else:
+                    if equipos_en_partido[equipo][0] not in equiposExistentes:
+                        print(True)
                         # cree al equipo con valores iniciales segun marcador
-                        if gol_local > gol_visitante:
-                            tablaEquipos.append([local, 1, 1, 0, 0, gol_local, gol_visitante, 3])
-                            tablaEquipos.append([visitante, 1, 0, 1, 0, gol_visitante, gol_local, 0])
-                        elif gol_local < gol_visitante:
-                            tablaEquipos.append([local, 1, 0, 1, 0, gol_local, gol_visitante, 0])
-                            tablaEquipos.append([visitante, 1, 1, 0, 0, gol_visitante, gol_local, 3])
-                        else:
-                            tablaEquipos.append([local, 1, 0, 0, 1, gol_local, gol_visitante, 1])
-                            tablaEquipos.append([visitante, 1, 0, 0, 1, gol_visitante, gol_local, 1])
+                        tablaEquipos.append([equipos_en_partido[equipo][0], 0, 0, 0, 0, 0, 0, 0])
+
+                # for equipo in range(len(equipos_en_partido)):
+                #     if equipos_en_partido[equipo] not in equiposExistentes:
+                #         print(True)
+                #         # cree al equipo con valores iniciales segun marcador
+                #         if gol_local > gol_visitante:
+                #             tablaEquipos.append([local, 1, 1, 0, 0, gol_local, gol_visitante, 3])
+                #             tablaEquipos.append([visitante, 1, 0, 1, 0, gol_visitante, gol_local, 0])
+                #         elif gol_local < gol_visitante:
+                #             tablaEquipos.append([local, 1, 0, 1, 0, gol_local, gol_visitante, 0])
+                #             tablaEquipos.append([visitante, 1, 1, 0, 0, gol_visitante, gol_local, 3])
+                #         else:
+                #             tablaEquipos.append([local, 1, 0, 0, 1, gol_local, gol_visitante, 1])
+                #             tablaEquipos.append([visitante, 1, 0, 0, 1, gol_visitante, gol_local, 1])
+
+                # actulización de puntos en caso de existencia de alguno de los equipos
+                for equipo in range(len(tablaEquipos)):
+                    if gol_local > gol_visitante:
+                        if tablaEquipos[equipo][0] == local:
+                            tablaEquipos[equipo][1] += 1
+                            tablaEquipos[equipo][2] += 1
+                            tablaEquipos[equipo][5] += gol_local
+                            tablaEquipos[equipo][6] += gol_visitante
+                            tablaEquipos[equipo][7] += 3
+                        if tablaEquipos[equipo][0] == visitante:
+                            tablaEquipos[equipo][1] += 1
+                            tablaEquipos[equipo][3] += 1
+                            tablaEquipos[equipo][5] += gol_visitante
+                            tablaEquipos[equipo][6] += gol_local
+                    elif gol_local < gol_visitante:
+                        if tablaEquipos[equipo][0] == local:
+                            tablaEquipos[equipo][1] += 1
+                            tablaEquipos[equipo][3] += 1
+                            tablaEquipos[equipo][5] += gol_local
+                            tablaEquipos[equipo][6] += gol_visitante
+                        if tablaEquipos[equipo][0] == visitante:
+                            tablaEquipos[equipo][1] += 1
+                            tablaEquipos[equipo][2] += 1
+                            tablaEquipos[equipo][5] += gol_visitante
+                            tablaEquipos[equipo][6] += gol_local
+                            tablaEquipos[equipo][7] += 3
+                    else:
+                        if tablaEquipos[equipo][0] == local:
+                            tablaEquipos[equipo][1] += 1
+                            tablaEquipos[equipo][4] += 1
+                            tablaEquipos[equipo][5] += gol_local
+                            tablaEquipos[equipo][6] += gol_visitante
+                            tablaEquipos[equipo][7] += 1
+                        if tablaEquipos[equipo][0] == visitante:
+                            tablaEquipos[equipo][1] += 1
+                            tablaEquipos[equipo][4] += 1
+                            tablaEquipos[equipo][5] += gol_visitante
+                            tablaEquipos[equipo][6] += gol_local
+                            tablaEquipos[equipo][7] += 1
 
                 agregarPartido = input('Agregar otro partido [Y/N]: ')
                 if agregarPartido.lower() == 'y':
@@ -69,26 +128,21 @@ def main():
                 else:
                     hayPartidos = False
 
-
-
-
-
-
-
             agregarFecha = input('Agregar otra fecha [Y/N]: ')
             if agregarFecha.lower() == 'y':
                 hayFecha = True
             else:
                 hayFecha = False
+        print(tabulate(tablaEquipos))
 
     elif opcion == 2:
+        print(tabulate(tablaEquipos))
         pass
     elif opcion == 3:
         pass
     else:
         pass
 
-    print(tablaEquipos)
 
 
 if __name__ == '__main__':
