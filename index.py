@@ -164,6 +164,29 @@ def main():
                 menu = False
 
         elif opcion == 4:
+            # ! Equipos con más puntos
+            # obtención de puntos
+            puntos = []
+            for equipo in range(len(tablaEquipos)):
+                puntos.append(tablaEquipos[equipo][7])
+
+            puntos.sort()
+            num_puntos = len(puntos)
+
+            # equipos con mayor cantidad de puntos
+            puntos_maximos = []
+            for punto in range(num_puntos):
+                if puntos[punto] == puntos[-1]:
+                    puntos_maximos.append(puntos[punto])
+
+            # buscaqueda de equipos con más puntos
+            equipos_goleadores =[]
+            for equipo in range(len(tablaEquipos)):
+                if tablaEquipos[equipo][7] == puntos_maximos[0]:
+                    equipos_goleadores.append([tablaEquipos[equipo][0], tablaEquipos[equipo][7]])
+
+            print(tabulate(equipos_goleadores))
+
             regresarMenu = input('Regresar al menú principal [Y/N]: ')
             if regresarMenu.lower() == 'y':
                 menu = True
