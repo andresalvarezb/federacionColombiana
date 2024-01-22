@@ -25,6 +25,7 @@ def main():
 
 
         if opcion == 1:
+            # ! Registrar fechas
             # Creación de fechas
             hayFecha = True
             fecha = 1
@@ -116,8 +117,6 @@ def main():
                 else:
                     hayFecha = False
 
-            # Impresión de la tabla de equipos
-            print(tabulate(tablaEquipos))
             regresarMenu = input('Regresar al menú principal [Y/N]: ')
             if regresarMenu.lower() == 'y':
                 menu = True
@@ -126,20 +125,44 @@ def main():
 
 
         elif opcion == 2:
+            # ! Consultar tabla de posiciones
             print(tabulate(tablaEquipos))
             regresarMenu = input('Regresar al menú principal [Y/N]: ')
             if regresarMenu.lower() == 'y':
                 menu = True
             else:
                 menu = False
-            
+
         elif opcion == 3:
+            # ! Equipo con más goles
+            # obtención de goles
+            goles = []
+            for equipo in range(len(tablaEquipos)):
+                goles.append(tablaEquipos[equipo][5])
+
+            goles.sort()
+            num_goles = len(goles)
+
+            # equipos con mayor cantidad de goles
+            goles_maximos = []
+            for gol in range(num_goles):
+                if goles[gol] == goles[-1]:
+                    goles_maximos.append(goles[gol])
+
+            # buscaqueda de equipos con más goles
+            equipos_goleadores =[]
+            for equipo in range(len(tablaEquipos)):
+                if tablaEquipos[equipo][5] == goles_maximos[0]:
+                    equipos_goleadores.append([tablaEquipos[equipo][0], tablaEquipos[equipo][5]])
+
+
+            print(tabulate(equipos_goleadores))
             regresarMenu = input('Regresar al menú principal [Y/N]: ')
             if regresarMenu.lower() == 'y':
                 menu = True
             else:
                 menu = False
-            
+
         elif opcion == 4:
             regresarMenu = input('Regresar al menú principal [Y/N]: ')
             if regresarMenu.lower() == 'y':
