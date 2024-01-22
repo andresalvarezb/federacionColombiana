@@ -191,7 +191,7 @@ def main():
                 menu = True
             else:
                 menu = False
-        
+
         elif opcion == 5:
             # ! Equipos con más partidos
             # obtención de partidos
@@ -221,7 +221,7 @@ def main():
                 menu = True
             else:
                 menu = False
-        
+
         elif opcion == 6:
             # ! Total de goles anotados por todos los equipos
             # obtención de goles
@@ -236,8 +236,19 @@ def main():
                 menu = True
             else:
                 menu = False
-        
+
         elif opcion == 7:
+            # ! Promedio de goles de todos los partidos
+            # obtención de goles
+            goles = []
+            for equipo in range(len(tablaEquipos)):
+                goles.append(tablaEquipos[equipo][5])
+
+            # Cantidad de goles
+            promedio = sum(goles)/len(goles)
+
+            print(f'Promedio de goles en campeonato: {promedio}')
+
             regresarMenu = input('Regresar al menú principal [Y/N]: ')
             if regresarMenu.lower() == 'y':
                 menu = True
