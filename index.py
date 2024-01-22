@@ -49,37 +49,11 @@ def main():
                     equiposExistentes.append(tablaEquipos[equipo][0])
 
                 # validar existencia de los equipos en partido en la tabla general de los equipos
-                # if (local not in equiposExistentes) or (visitante not in equiposExistentes):
-                #     print(True)
-                #     # cree al equipo con valores iniciales segun marcador
-                #     if gol_local > gol_visitante:
-                #         tablaEquipos.append([local, 1, 1, 0, 0, gol_local, gol_visitante, 3])
-                #         tablaEquipos.append([visitante, 1, 0, 1, 0, gol_visitante, gol_local, 0])
-                #     elif gol_local < gol_visitante:
-                #         tablaEquipos.append([local, 1, 0, 1, 0, gol_local, gol_visitante, 0])
-                #         tablaEquipos.append([visitante, 1, 1, 0, 0, gol_visitante, gol_local, 3])
-                #     else:
-                #         tablaEquipos.append([local, 1, 0, 0, 1, gol_local, gol_visitante, 1])
-                #         tablaEquipos.append([visitante, 1, 0, 0, 1, gol_visitante, gol_local, 1])
                 for equipo in range(len(equipos_en_partido)):
                     if equipos_en_partido[equipo][0] not in equiposExistentes:
                         print(True)
-                        # cree al equipo con valores iniciales segun marcador
+                        # cree al equipo con valores iniciales
                         tablaEquipos.append([equipos_en_partido[equipo][0], 0, 0, 0, 0, 0, 0, 0])
-
-                # for equipo in range(len(equipos_en_partido)):
-                #     if equipos_en_partido[equipo] not in equiposExistentes:
-                #         print(True)
-                #         # cree al equipo con valores iniciales segun marcador
-                #         if gol_local > gol_visitante:
-                #             tablaEquipos.append([local, 1, 1, 0, 0, gol_local, gol_visitante, 3])
-                #             tablaEquipos.append([visitante, 1, 0, 1, 0, gol_visitante, gol_local, 0])
-                #         elif gol_local < gol_visitante:
-                #             tablaEquipos.append([local, 1, 0, 1, 0, gol_local, gol_visitante, 0])
-                #             tablaEquipos.append([visitante, 1, 1, 0, 0, gol_visitante, gol_local, 3])
-                #         else:
-                #             tablaEquipos.append([local, 1, 0, 0, 1, gol_local, gol_visitante, 1])
-                #             tablaEquipos.append([visitante, 1, 0, 0, 1, gol_visitante, gol_local, 1])
 
                 # actulización de puntos en caso de existencia de alguno de los equipos
                 for equipo in range(len(tablaEquipos)):
