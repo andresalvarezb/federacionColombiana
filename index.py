@@ -123,7 +123,6 @@ def main():
             else:
                 menu = False
 
-
         elif opcion == 2:
             # ! Consultar tabla de posiciones
             print(tabulate(tablaEquipos))
@@ -193,6 +192,29 @@ def main():
             else:
                 menu = False
         elif opcion == 5:
+            # ! Equipos con más partidos
+            # obtención de puntos
+            partidos = []
+            for equipo in range(len(tablaEquipos)):
+                partidos.append(tablaEquipos[equipo][1])
+
+            partidos.sort()
+            num_partidos = len(partidos)
+
+            # equipos con mayor cantidad de partidos
+            partidos_maximos = []
+            for partido in range(num_partidos):
+                if partidos[partido] == partidos[-1]:
+                    partidos_maximos.append(partidos[partido])
+
+            # buscaqueda de equipos con más partidos
+            equipos_goleadores =[]
+            for equipo in range(len(tablaEquipos)):
+                if tablaEquipos[equipo][1] == partidos_maximos[0]:
+                    equipos_goleadores.append([tablaEquipos[equipo][0], tablaEquipos[equipo][1]])
+
+            print(tabulate(equipos_goleadores))
+
             regresarMenu = input('Regresar al menú principal [Y/N]: ')
             if regresarMenu.lower() == 'y':
                 menu = True
